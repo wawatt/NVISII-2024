@@ -26,7 +26,7 @@ jobs:
       matrix:
         os: [ubuntu-20.04, windows-2019]
         python-version: ['3.9', '3.10'] # '3.11' has some issues atm...
-        optix-version: [70, 71, 72]
+        optix-version: [72]
         include:
           # Includes the value for matrix.container when the OS is Ubuntu, to use manylinux complaint CentOS version.
           # For Windows, matrix.container remains undefined and the build runs on the host VM instead of within a container.
@@ -194,7 +194,7 @@ jobs:
           python setup.py bdist_wheel
       
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: nvisii-${{ matrix.os }}-python${{ matrix.python-version }}-optix${{ matrix.optix-version }}
           path: install/dist/*.whl
@@ -209,7 +209,7 @@ jobs:
         with:
           fetch-depth: 0
       
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: nvisii-ubuntu-20.04-python3.9-optix72
       
@@ -272,7 +272,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
       
       - uses: actions/setup-python@v2
         with:
