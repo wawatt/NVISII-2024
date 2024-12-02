@@ -54,7 +54,7 @@ jobs:
           PYVER=cp${PY:0:1}${PY:2:1}-cp${PY:0:1}${PY:2:1}${M}
           PYEXEC=/opt/python/${PYVER}/bin/python
           $PYEXEC -m pip install --upgrade pip
-          $PYEXEC -m pip install setuptools setuptools_scm numpy==1.19.5
+          $PYEXEC -m pip install setuptools setuptools_scm numpy==1.26.4
           
           # Install CMake
           $PYEXEC -m pip install cmake
